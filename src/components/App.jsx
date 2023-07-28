@@ -36,6 +36,7 @@ export class App extends React.Component {
   };
 
   render() {
+    const { filter } = this.state;
     const { contacts } = this.state;
  
     return(
@@ -43,7 +44,7 @@ export class App extends React.Component {
         <h1 className={css.h1}>Phonebook</h1>
         <Form onAddContact={this.handleAddContact} />
         <h2 className={css.h2}>Contacts</h2>
-        <Filter />
+        <Filter value={filter} onChange={this.handleFilterChange}></Filter>
         <ContactList contacts={contacts} />
       </div>
     );
@@ -56,6 +57,7 @@ App.propTypes = {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
+      filter: PropTypes.string.isRequired,
     })
   ).isRequired,
 };
