@@ -10,7 +10,7 @@ export class ContactsItem extends React.Component {
 
     render() {
         const { contact } = this.props;
-        const { onDeleteContact } = this.props;
+   
 
         return (
             <li className={css.classItem}>

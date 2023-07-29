@@ -7,9 +7,9 @@ export class Filter extends React.Component {
         const { value, onChange } = this.props;
     
         return (
-            <label classname={css.label}>
-                <span classname={css.span}>Find contacts by name</span>
-                <input classname={css.input}
+            <label className={css.label}>
+                <span className={css.span}>Find contacts by name</span>
+                <input className={css.input}
                     type="text"
                     value={value}
                     onChange={onChange}
