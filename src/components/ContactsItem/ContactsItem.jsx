@@ -15,7 +15,7 @@ export class ContactsItem extends React.Component {
         return (
             <li className={css.classItem}>
                 <span className={css.name}>{contact.name}</span> :  <span className={css.number}>{contact.number}</span>;
-                <button onClick={() => onDeleteContact(contact.id)} className={css.button}>Delete</button>
+                <button onClick={() => this.handleDeleteContact(contact.id)} className={css.button}>Delete</button>
             </li>
         );
     };
