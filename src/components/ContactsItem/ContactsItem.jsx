@@ -7,6 +7,7 @@ export class ContactsItem extends React.Component {
         const { contact, onDeleteContact } = this.props;
         onDeleteContact(contact.id);
     };
+    
 
     render() {
         const { contact } = this.props;
