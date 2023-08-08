@@ -3,7 +3,8 @@ import { nanoid } from 'nanoid';
 import { Form } from './Form/Form';
 import PropTypes from 'prop-types';
 import { Filter } from './Filter/Filter';
-import { ContactList } from "./ContactList/ContactList";
+import ListContacts from './ContactList/ContactList';
+import ContactsItem from "./ContactsItem/ContactsItem";
 import css from './App.module.css';
 
 export class App extends React.Component {
@@ -35,9 +36,25 @@ export class App extends React.Component {
     }
   };
 
+  checkNameToSame = name => {
+    const lowerCaseNewName = name.toLowerCase();
+    return this.state.contacts.some(
+      contact => contact.name.toLowerCase() === lowerCaseNewName
+    );
+  };
+
+  getVisibleContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   render() {
     const { filter } = this.state;
-    const { contacts } = this.state;
+    const visibleContacts = this.getVisibleContacts();
  
     return(
       <div>
@@ -45,7 +62,13 @@ export class App extends React.Component {
         <Form onAddContact={this.handleAddContact} />
         <h2 className={css.h2}>Contacts</h2>
         <Filter value={filter} onChange={this.handleFilterChange}></Filter>
-        <ContactList contacts={contacts} />
+        <ListContacts children={
+          <ContactsItem
+            contacts={visibleContacts}
+            onDeleteContact={this.deleteContact}
+          />
+        }
+        />
       </div>
     );
   }
