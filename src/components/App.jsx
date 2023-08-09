@@ -14,8 +14,6 @@ class App extends React.Component {
       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },],
-    name: '',
-    number: '',
     filter: '',
   };
 
@@ -36,6 +34,16 @@ class App extends React.Component {
     return this.state.contacts.some(
       contact => contact.name.toLowerCase() === lowerCaseNewName
     );
+  };
+
+  addnewcontact = newContact => {
+    this.setState(({ contacts }) => ({
+      contacts: [newContact, ...contacts],
+    }));
+  };
+
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
   getVisibleContacts = () => {
@@ -62,7 +70,7 @@ class App extends React.Component {
         <h1 className={css.h1}>Phonebook</h1>
         <Form onAddContact={this.handleAddContact} />
         <h2 className={css.h2}>Contacts</h2>
-        <Filter value={filter} onChange={this.handleFilterChange}></Filter>
+        <Filter value={filter} onChange={this.changeFilter}></Filter>
         <ListContacts children={
           <ContactsItem
             contacts={visibleContacts}
