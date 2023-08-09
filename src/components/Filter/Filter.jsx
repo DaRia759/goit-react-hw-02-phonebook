@@ -1,26 +1,17 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import css from './Filter.module.css'
+import React from 'react';
+import PropType from 'prop-types';
+import css from './Filter.module.css';
 
-export class Filter extends React.Component {
-    render() {
-        const { value, onChange } = this.props;
-    
-        return (
-            <label className={css.label}>
-                <span className={css.span}>Find contacts by name</span>
-                <input className={css.input}
-                    type="text"
-                    value={value}
-                    onChange={onChange}
-                    placeholder="Search contacts"
-                />
-            </label>
-        );
-    }
+const Filter = ({ value, onChange }) => (
+  <label className={css.findZone}>
+    Find contacts by name
+    <input type="text" value={value} onChange={onChange} />
+  </label>
+);
 
-    static propTypes = {
-        value: PropTypes.string,
-        onChange: PropTypes.func.isRequired,
-    };
-}
+Filter.propTypes = {
+  value: PropType.string.isRequired,
+  onChange: PropType.func.isRequired,
+};
+
+export default Filter;
