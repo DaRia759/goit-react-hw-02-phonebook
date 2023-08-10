@@ -36,7 +36,7 @@ class App extends React.Component {
     );
   };
 
-  addnewcontact = newContact => {
+  addNewContact = newContact => {
     this.setState(({ contacts }) => ({
       contacts: [newContact, ...contacts],
     }));

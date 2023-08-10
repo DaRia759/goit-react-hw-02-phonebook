@@ -53,9 +53,9 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-    handleFormSubmit: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    handleChange: PropTypes.func.isRequired,
+    onAddContact: PropTypes.func.isRequired,
+    // onSubmit: PropTypes.func.isRequired,
+    // handleChange: PropTypes.func.isRequired,
 };
     
 export default Form;
